@@ -16,5 +16,6 @@ struct SearchResultResponce{
 extension SearchResultResponce: Decodable {
     enum CodingKeys: String, CodingKey {
         case photos = "results"
+        
     }
 }

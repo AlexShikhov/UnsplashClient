@@ -22,11 +22,15 @@ import Foundation
 
 struct Photos {
     var urls: URLKing
+    var width: Int
+    var height: Int
 }
 
 extension Photos: Codable {
     enum CodingCase: String, CodingKey {
         case urls = "urls"
+        case width = "width"
+        case height = "height"
     }
 }
 
@@ -45,6 +49,18 @@ extension URLKing: Codable {
         case regular = "regular"
         case small = "small"
         case thumb = "thumb"
+    }
+}
+
+struct PhotosSize {
+    var heigth: Int
+    var weigth: Int
+}
+
+extension PhotosSize: Codable {
+    enum CodingCase: String, CodingKey {
+        case heigth = "heigth"
+        case weigth = "weigth"
     }
 }
 
