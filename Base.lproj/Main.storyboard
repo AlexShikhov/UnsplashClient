@@ -55,8 +55,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="wnb-cC-VSg"/>
                     <connections>
-                        <outlet property="collectionView" destination="SMI-Ne-Qw7" id="OsU-aA-XaC"/>
-                        <outlet property="searchBar" destination="3CQ-r9-jRw" id="5MA-UQ-eGz"/>
+                        <outlet property="collectionView" destination="SMI-Ne-Qw7" id="8KU-Hb-KuF"/>
+                        <outlet property="searchBar" destination="3CQ-r9-jRw" id="vwq-1H-Tzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qaU-0O-oki" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -85,6 +85,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Gca-60-52s" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vDt-ga-ecf">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
