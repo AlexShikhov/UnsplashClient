@@ -58,6 +58,7 @@ class NetworkService {
                     
                 } catch {
                     print("Erorr to decode JSON", error.localizedDescription)
+                    
 
                 }
                 

@@ -7,18 +7,33 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MyPhotosTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var photoImage: UIImageView!
+    @IBOutlet weak var infoLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        photoImage.image = nil
+        infoLabel.text = nil
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    //MARK: - Config func
+    
+    func configure(source photo: Photos) {
+        photoImage.sd_setImage(with: URL(string: photo.urls.regular), completed: nil)
+        infoLabel.text = String(photo.height)
+    }
 }
