@@ -52,7 +52,7 @@ extension GalleryViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        timer = Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false) { (_) in
+        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { (_) in
             self.network.fetchPhotos(request: searchText) { (results) in
                 self.photoGallery = results
                 self.collectionView.reloadData()
