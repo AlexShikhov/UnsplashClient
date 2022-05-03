@@ -30,15 +30,37 @@ class InformationViewController: UIViewController {
         nameLabel.text = sourcePhoto.user.name 
         createLabel.text = sourcePhoto.create ?? "no info"
         locatonLabel.text = sourcePhoto.user.location ?? "no info"
+        
         imageView.sd_setImage(with: URL(string: sourcePhoto.urls.regular), completed: nil)
+        deleteButton.layer.cornerRadius = 10
+        addButton.layer.cornerRadius = 10
+        
     }
     
-
+//MARK: - Alert
+    
+    func showAlert(header: String, message: String) {
+        let alertController = UIAlertController(title: header, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            NotificationCenter.default.post(name: NSNotification.Name("DeletePhoto"), object: self.sourcePhoto)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(action)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
+    }
+    
+    
+    
+    
+//MARK: - Action
     @IBAction func deleteButtonPress(_ sender: Any) {
         guard let sourcePhoto = sourcePhoto as? Photos else {
             return
         }
-        NotificationCenter.default.post(name: NSNotification.Name("DeletePhoto"), object: sourcePhoto)
+        showAlert(header: "Attention!", message: "Do you really want to delete this photo from favorite?")
+        
         
     }
     

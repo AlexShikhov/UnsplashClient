@@ -34,6 +34,6 @@ class MyPhotosTableViewCell: UITableViewCell {
     
     func configure(source photo: Photos) {
         photoImage.sd_setImage(with: URL(string: photo.urls.regular), completed: nil)
-        infoLabel.text = String(photo.height)
+        infoLabel.text = String(photo.user.name)
     }
 }

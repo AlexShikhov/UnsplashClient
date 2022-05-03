@@ -17,6 +17,7 @@ class GalleryViewController: UIViewController {
     
     let network = NetworkService()
     var photoGallery: [Photos] = []
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()

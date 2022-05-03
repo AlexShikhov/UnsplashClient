@@ -25,6 +25,16 @@ class MyPhotosViewController: UIViewController {
         tableView.register(UINib(nibName: "MyPhotosTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseTableView")
     }
     
+    //MARK: - Prepare for segue
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "fromFavoriteToInfo" {
+            
+            let object = sender as? Photos
+            guard let viewController = segue.destination as? InformationViewController else {return}
+            viewController.sourcePhoto = object
+        }
+    }
     
     //MARK: - Selector
     

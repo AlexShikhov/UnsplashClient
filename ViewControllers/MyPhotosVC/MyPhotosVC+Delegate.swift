@@ -12,5 +12,9 @@ extension MyPhotosViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(50.0)
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        performSegue(withIdentifier: "fromFavoriteToInfo", sender: myPhotos[indexPath.item])
+    }
 }
-

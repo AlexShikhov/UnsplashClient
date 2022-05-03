@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Search-->
         <scene sceneID="VIq-AV-HLN">
             <objects>
                 <viewController id="TfK-Pn-PVZ" customClass="GalleryViewController" customModule="UnsplashClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -53,7 +53,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5yT-05-1Xf"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="wnb-cC-VSg"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="wnb-cC-VSg"/>
                     <connections>
                         <outlet property="collectionView" destination="SMI-Ne-Qw7" id="8KU-Hb-KuF"/>
                         <outlet property="searchBar" destination="3CQ-r9-jRw" id="vwq-1H-Tzh"/>
@@ -64,7 +64,7 @@
             </objects>
             <point key="canvasLocation" x="213.04347826086959" y="94.419642857142847"/>
         </scene>
-        <!--Item-->
+        <!--Favorite-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MyPhotosViewController" customModule="UnsplashClient" customModuleProvider="target" sceneMemberID="viewController">
@@ -86,9 +86,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="gVA-2s-lOV"/>
+                    <tabBarItem key="tabBarItem" title="Favorite" image="heart.fill" catalog="system" selectedImage="heart.fill" id="gVA-2s-lOV"/>
                     <connections>
                         <outlet property="tableView" destination="9Ee-qq-fhB" id="JnI-Uw-4Iv"/>
+                        <segue destination="7Km-F9-v31" kind="show" identifier="fromFavoriteToInfo" id="VS1-G9-Ur0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -146,22 +147,26 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsx-2m-dSc">
-                                <rect key="frame" x="258" y="703" width="110" height="30"/>
+                                <rect key="frame" x="254" y="703" width="110" height="30"/>
+                                <color key="backgroundColor" red="0.45550906658172607" green="0.97533124685287476" blue="0.96708530187606812" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="6d0-cZ-WcV"/>
                                     <constraint firstAttribute="height" constant="30" id="LRS-K2-TiH"/>
                                 </constraints>
+                                <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Add to favorite"/>
                                 <connections>
                                     <action selector="addButtonPress:" destination="7Km-F9-v31" eventType="touchUpInside" id="tjb-4S-hJ4"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NMh-2n-XcD">
-                                <rect key="frame" x="67" y="703" width="110" height="30"/>
+                                <rect key="frame" x="50" y="703" width="110" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.24325152349675727" blue="0.33061172550384055" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5p2-j0-dzD"/>
                                     <constraint firstAttribute="width" constant="110" id="bSz-lN-pbR"/>
                                 </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="deleteButtonPress:" destination="7Km-F9-v31" eventType="touchUpInside" id="j7p-eL-4br"/>
@@ -174,7 +179,7 @@
                             <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="NvD-iN-hYE" secondAttribute="trailing" constant="10" id="6do-FF-Cng"/>
                             <constraint firstItem="suk-pb-au4" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="46" id="7m1-AL-aFk"/>
                             <constraint firstItem="suk-pb-au4" firstAttribute="top" secondItem="NvD-iN-hYE" secondAttribute="bottom" constant="22.5" id="9WR-36-Zhk"/>
-                            <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="xsx-2m-dSc" secondAttribute="trailing" constant="46" id="H8f-m2-5a6"/>
+                            <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="xsx-2m-dSc" secondAttribute="trailing" constant="50" id="H8f-m2-5a6"/>
                             <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="suk-pb-au4" secondAttribute="trailing" constant="10" id="HuC-gd-YnZ"/>
                             <constraint firstItem="cI3-Ru-wIy" firstAttribute="top" secondItem="bDP-Do-OCU" secondAttribute="bottom" constant="16.5" id="Kaw-dw-RCW"/>
                             <constraint firstItem="61q-MG-401" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="46" id="NBl-D7-PrS"/>
@@ -183,7 +188,7 @@
                             <constraint firstItem="SjD-4t-2Cv" firstAttribute="top" secondItem="ESl-Tp-E7w" secondAttribute="bottom" constant="30.5" id="U72-3z-zV4"/>
                             <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="61q-MG-401" secondAttribute="trailing" constant="46" id="U83-Kw-rUw"/>
                             <constraint firstItem="NvD-iN-hYE" firstAttribute="top" secondItem="cI3-Ru-wIy" secondAttribute="bottom" constant="30" id="VJ3-oI-Khn"/>
-                            <constraint firstItem="NMh-2n-XcD" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="67" id="VSZ-Sm-mfM"/>
+                            <constraint firstItem="NMh-2n-XcD" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="50" id="VSZ-Sm-mfM"/>
                             <constraint firstItem="eCu-cf-AtO" firstAttribute="trailing" secondItem="ESl-Tp-E7w" secondAttribute="trailing" constant="10" id="W8e-O8-h7p"/>
                             <constraint firstItem="bDP-Do-OCU" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="46" id="WAV-CV-9E3"/>
                             <constraint firstItem="NvD-iN-hYE" firstAttribute="leading" secondItem="eCu-cf-AtO" secondAttribute="leading" constant="46" id="WKh-DP-owy"/>
@@ -232,4 +237,11 @@
             <point key="canvasLocation" x="-687" y="449"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VS1-G9-Ur0"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+    </resources>
 </document>
