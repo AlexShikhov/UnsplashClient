@@ -18,6 +18,8 @@ class MyPhotosViewController: UIViewController {
         super.viewDidLoad()
 
         NotificationCenter.default.addObserver(self, selector: #selector(addGroup(notification:)), name: NSNotification.Name(rawValue: "SelectPhoto"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteGroup(notification:)), name: NSNotification.Name(rawValue: "DeletePhoto"), object: nil)
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UINib(nibName: "MyPhotosTableViewCell", bundle: nil), forCellReuseIdentifier: "reuseTableView")
@@ -42,15 +44,27 @@ class MyPhotosViewController: UIViewController {
     @objc func deleteGroup(notification: Notification){
         
         guard let photo = notification.object as? Photos else {return}
-        var indexOfSelectPhoto = Int()
+         
+        if myPhotos.contains( where: { soursePhoto in
+            soursePhoto.urls.full == photo.urls.full
+        }){
+            searchAndDeletePhoto(photo: photo)
+        } else {
+            print("no photo in favorite")
+        }
         
+        tableView.reloadData()
+    }
+//MARK: - Method
+  func searchAndDeletePhoto(photo: Photos) {
+        var indexOfSelectPhoto = Int()
         for i in 0..<myPhotos.count {
             if myPhotos[i].urls.full == photo.urls.full {
                 indexOfSelectPhoto = i
             }
         }
         myPhotos.remove(at: indexOfSelectPhoto)
-        tableView.reloadData()
+        
     }
 
 }
