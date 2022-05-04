@@ -21,7 +21,10 @@ class GalleryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        network.fetchRandomPhotos { (results) in
+            self.photoGallery = results
+        }
         searchBar.delegate = self
         
         collectionView.dataSource = self
