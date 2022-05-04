@@ -11,11 +11,12 @@ import Foundation
 
 struct SearchResultResponce{
     public let photos: [Photos]
+    public let total: Int
 }
 
 extension SearchResultResponce: Decodable {
     enum CodingKeys: String, CodingKey {
         case photos = "results"
-        
+        case total = "total"
     }
 }

@@ -8,7 +8,10 @@
 
 import Foundation
 
+
+
 struct Photos {
+    
     var urls: URLKing
     var width: Int
     var height: Int
@@ -48,17 +51,6 @@ extension URLKing: Codable {
     }
 }
 
-struct PhotosSize {
-    var heigth: Int
-    var weigth: Int
-}
-
-extension PhotosSize: Codable {
-    enum CodingCase: String, CodingKey {
-        case heigth = "heigth"
-        case weigth = "weigth"
-    }
-}
 
 struct User {
     var name: String
