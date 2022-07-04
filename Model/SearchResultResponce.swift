@@ -14,7 +14,7 @@ struct SearchResultResponce{
     public let total: Int
 }
 
-extension SearchResultResponce: Decodable {
+extension SearchResultResponce: Codable {
     enum CodingKeys: String, CodingKey {
         case photos = "results"
         case total = "total"
