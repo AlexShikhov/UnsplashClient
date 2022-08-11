@@ -12,6 +12,8 @@ import Alamofire
 
 class NetworkService {
     
+    //MARK: - URL Construct
+    
     private var urlCostruct: URLComponents = {
         
         var constructor = URLComponents()
@@ -23,6 +25,8 @@ class NetworkService {
         return constructor
     }()
     
+    
+    
     private func prepareParametres(searchTern: String?) -> [String: String] {
         
         var parametres = [String: String]()
@@ -33,6 +37,8 @@ class NetworkService {
         return parametres
     }
     
+  
+    
     private func prepareHeader() -> [String: String]? {
         var header = [String: String]()
         
@@ -42,6 +48,7 @@ class NetworkService {
     }
     
     
+    //MARK: - Servis for photoSearch
     
     func fetchPhotos(request: String, compition: @escaping ([Photos]) -> ()) {
         
@@ -69,20 +76,51 @@ class NetworkService {
         }
     }
     
-    func decodeJSON<T: Codable>(type: T.Type, from: Data?) -> T? {
-        
-        let decoder = JSONDecoder()
-        
-        guard let data = from else { return nil }
-        
-        do {
-            let object = try decoder.decode(type.self, from: data)
-            return object
-        } catch {
-            print("Erorr to decode JSON", error.localizedDescription)
-            return nil
-        }
-        
-    }
     
+    
+    //MARK: - Service for random photo
+    
+    private var randomUrlCostruct: URLComponents = {
+        
+        var constructor = URLComponents()
+        
+        constructor.scheme = "https"
+        constructor.host = "api.unsplash.com"
+        constructor.path = "/photos/random"
+        
+        
+        return constructor
+    }()
+    
+    private func prepareParametresForRandom() -> [String: String] {
+          
+          var parametres = [String: String]()
+          parametres["count"] = "20"
+          
+          return parametres
+      }
+    
+    func fetchRandomPhotos(compition: @escaping ([Photos]) -> ()) {
+        
+        guard let url = randomUrlCostruct.url else {return}
+        Alamofire.request(url, method: .get, parameters: prepareParametresForRandom(), headers: prepareHeader()).responseJSON { (responce) in
+            switch (responce.result){
+            case .success:
+                
+                guard let data = responce.data else { return }
+                print(data)
+                
+                do {
+                    let object = try JSONDecoder().decode([Photos].self, from: data)
+                    
+                    compition(object)
+                } catch {
+                    print("Erorr to decode JSON", error.localizedDescription)
+                }
+                
+            case .failure:
+                print("Failure responce")
+            }
+        }
+    }
 }

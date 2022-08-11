@@ -11,12 +11,12 @@ import UIKit
 //MARK: - GalleryViewDataSource
 
 extension GalleryViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoGallery.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuse", for: indexPath) as? GalleryViewCell else {return UICollectionViewCell()}
         
         let urlImage = photoGallery[indexPath.item].urls.regular
